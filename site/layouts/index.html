@@ -1,10 +1,13 @@
-<!DOCTYPE html> 
-<html> 
-<body> 
-  <p>hugo says hello!</p> 
-	  {{ range first 10 .Pages }}
-    <h1>{{ .Title }}</h1>
-  {{ end }}
+{{ define "main" }}
 
-</body> 
-</html> 
+{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
+
+{{ partial "short-text" .Params.blurb}}
+
+{{ partial "2-up" .Params }}
+
+{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
+
+{{ partial "blog" . }}
+
+{{ end }}
